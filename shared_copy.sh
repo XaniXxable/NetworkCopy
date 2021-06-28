@@ -2,11 +2,10 @@
 
 net_dir=$NET_DIR;
 filename=`basename "$0"`;
-copy_file_path=$1;
-
+copy_file_path=$@;
 
 # Check the parametr count.
-if [ $# != 1 ]; then
+if [ $# < 1 ]; then
   printf "Usage: ./$filename <path to file>";
   exit -2;
 fi
