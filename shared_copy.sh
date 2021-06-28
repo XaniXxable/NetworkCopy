@@ -13,13 +13,8 @@ fi
 
 # Check if the network drive has been already mounted.
 if mountpoint -q -- "$net_dir"; then
-  if [[ -d $copy_file_path ]]; then
-    printf "Copy folder $copy_file_path";
-    sudo cp -rv $copy_file_path $net_dir;
-  else
-    printf "Copy file $copy_file_path";
-    sudo cp -v $copy_file_path $net_dir;
-  fi
+  printf "Copy $copy_file_path to $net_dir";
+  sudo rsync -avz --progress $copy_file_path $net_dir;
 else
   printf "$net_dir is not mounted yet!";
   exit -1;
