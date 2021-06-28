@@ -1,8 +1,9 @@
 #!/bin/bash
 
-net_dir=$NET_DIR
-filename=`basename "$0"`
-copy_file_path=$1
+net_dir=$NET_DIR;
+filename=`basename "$0"`;
+copy_file_path=$1;
+
 
 # Check the parametr count.
 if [ $# != 1 ]; then
@@ -12,8 +13,13 @@ fi
 
 # Check if the network drive has been already mounted.
 if mountpoint -q -- "$net_dir"; then
-  printf "Copy file $copy_file_path";
-  sudo cp $copy_file_path $net_dir;
+  if [[ -d $copy_file_path ]]; then
+    printf "Copy folder $copy_file_path";
+    sudo cp -rv $copy_file_path $net_dir;
+  else
+    printf "Copy file $copy_file_path";
+    sudo cp -v $copy_file_path $net_dir;
+  fi
 else
   printf "$net_dir is not mounted yet!";
   exit -1;
