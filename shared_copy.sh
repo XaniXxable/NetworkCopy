@@ -5,7 +5,7 @@ filename=`basename "$0"`;
 copy_file_path=$@;
 
 # Check the parametr count.
-if [ $# < 1 ]; then
+if [ $# -le 0 ]; then
   printf "Usage: ./$filename <path to file>";
   exit -2;
 fi
