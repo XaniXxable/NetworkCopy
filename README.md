@@ -4,6 +4,6 @@ This is a small bash script to copy a file onto a network drive, which is alread
 # Usage
 To use it you must initialize an environment variable `NET_DIR`. Do that with `export NET_DIR='path to the mountpoint'`.
 
-Only the first argument will be used. More than one argument will be ignored.
+Is is possible to copy multiple files and directories at once. Also to copy files and directories at the same time.
 `./shared_copy.sh <path to file>`
 
